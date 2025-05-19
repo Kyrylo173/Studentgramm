@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "Upload";
+}
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+    <form asp-controller="Photo" asp-action="Upload" method="post" enctype="multipart/form-data" id="upload-form"> 
+        <br>
+        <br>
+        <label>Нова публікація</label>
+        <br>
+        <input type="text" name="title" placeholder="Назва фото" required />
+        <br>
+        <input type="file" name="file" required />
+        <br>
+        <textarea id="caption-textarea" name="caption" placeholder="Опис" required></textarea>
+        <br>
+        <button class="anim-button" type="submit">Завантажити!</button>
+    </form>
+</body>
+    </html>

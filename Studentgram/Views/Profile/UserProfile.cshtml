@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Профіль";
+}
+<div class="profile-widget">
+<p><strong>Ім'я:</strong> @Model.Username</p>
+<br>
+@if(!string.IsNullOrEmpty(Model.Description)){
+ <p><strong>Про себе:</strong> @Model.Description</p>
+}
+
+<h3>Публікації користувача</h3>
+
+ @if (Model.Photos.Count > 0)
+{  
+    <div class="photo-card-profile">
+    @foreach (var photo in Model.Photos)
+    {
+        <div class="photo-item">
+            <img src="@photo.Image" alt="@photo.Title" width="300" />
+            <p>@photo.Title</p>
+                    @if (!string.IsNullOrEmpty(photo.Caption))
+                    {
+                        <p><strong>Про публікацію: </strong> @photo.Caption</p>
+                    }
+                    else
+                    {
+                        
+                    }
+       </div>
+    }
+    </div>
+}
+else
+{
+    <p>У користувача немає жодного опублікованого фото.</p>
+}
+</div>
+
+

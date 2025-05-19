@@ -1,0 +1,16 @@
+﻿@model Studentgram.Models.Users
+@{
+    ViewData["Title"] = "Description";
+}
+<h1>Профиль пользователя @Model.Username</h1>
+
+<p><strong>Описание:</strong> @Model.Description</p>
+
+<h2>Изменить описание</h2>
+<body>
+<form method="post" asp-controller="Profile" asp-action="AddDescription">
+    <input type="hidden" name="username" value="@Model.Username" />
+    <textarea name="description">@Model.Description</textarea>
+    <button type="submit">Сохранить</button>
+</form>
+</body>

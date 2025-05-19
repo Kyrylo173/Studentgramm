@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+    <html>
+    <head>
+        <link rel="stylesheet" href="~/css/site.css"/>
+    </head>
+  <body>
+      <form method="post" class="login-form">
+          <br>
+          <label>Авторизація</label>
+          <br>
+          <br>
+          <input placeholder="Логін" type="text" name="username" required >
+          <br>
+          <input placeholder="Пароль" type="password" name="password" required >
+          <br>
+          <br>
+         <button class="anim-button" type="submit">Авторизуватися!</button>
+        <br>
+        <br>
+        <br>
+        <p><a href="/Auth/Register">Заєреструвати акаунт!</a></p>
+     </form>   
+    </body>
+    </html>

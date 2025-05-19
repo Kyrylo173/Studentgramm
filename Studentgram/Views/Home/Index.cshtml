@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Studentgram.Models.Photo>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="photo-card-container">
+ @foreach (var photo in Model)
+{
+    <div class="photo-card">
+        <p class="person-posted">Опублікував-ла <strong>@photo.User.Username</strong></p>
+        <button type="submit" class="profile-button">
+            <a asp-controller="Profile" asp-action="UserProfile" asp-route-username="@photo.Username">Профіль</a>
+            </button>
+        <img src="@photo.Image" alt="Photo" width="300"/>
+        <p class="photo-title">@photo.Title</p>
+       @if(!string.IsNullOrEmpty(photo.Caption)){
+            <p class="caption"><strong>Про публікацію:</strong> @photo.Caption</p>
+        }
+        else
+        {
+            
+        }
+        <form method="post" asp-controller="Home" asp-action="Like">
+            <input type="hidden" name="photoId" value="@photo.Id" />
+            <button type="submit">
+             <p>@photo.LikedUsers.Count</p>
+                @if (photo.LikedUsers.Contains(Context.Session.GetString("Username")))
+                {
+                    <span>❤️</span>
+                }
+                else
+                {
+                    <span>🤍</span>
+                }
+            </button>
+        </form>
+        <input type="checkbox" id="toggle-comments-@photo.Id" class="comment-toggle" hidden/>
+            <label for="toggle-comments-@photo.Id" class="comment-button">💬 Коментарі</label>
+        <div class="comment-modal">
+            <div class="comment-box">
+                
+                    <label for="toggle-comments-@photo.Id" class="close-button">✖</label>
+            <div class="comment-content">
+           <ul>
+            @foreach(var comment in photo.Comments)
+            {
+                <li class="comennts"><strong>@comment.User.Username коментує: </strong>
+                    <br>@comment.Content <p id="comment-created">(@comment.Created.ToString("u"))</p></li>
+            }
+        </ul>
+        </div>
+        <form class="comment-form" asp-controller="Home" asp-action="AddComment" method="post">
+            <input type="hidden" name="photoId" value="@photo.Id">
+            <textarea  name="content" maxlength="50" placeholder="Напишіть свої враження"></textarea>
+            <button  type="submit">Відправити!</button>
+        </form>
+     </div>
+   </div>
+   </div>
+}
+</div>

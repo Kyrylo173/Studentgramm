@@ -1,0 +1,48 @@
+﻿@model Studentgram.Models.Users
+@{
+    ViewData["Title"] = "Profile";
+}
+    <html>
+    <body>
+    <h2 class="hello-title">Раді вас вітати, <strong>@Context.Session.GetString("Username")</strong>!</h2>
+    <br>    
+    <div class="profile-widget">
+        <button id="to-settings-button">
+        <a class="btn" asp-controller="Profile" asp-action="ProfileSettings">Налаштування</a>
+      </button>
+        <p><strong>Ім'я:</strong>@Context.Session.GetString("Username")</p>
+        @if(!string.IsNullOrEmpty(Model.Description)){
+        <p><strong>Про себе: </strong> @Model.Description</p>
+        } 
+        else {
+        <h3>Роскажіть про себе!</h3>
+        <br>
+        <form method="post" asp-action="AddDescription">
+            <textarea name="description" placeholder="Про себе" maxlength="150"></textarea>
+            <br>
+            <button class="anim-button" type="submit">Зберегти!</button>
+        </form>
+        }
+        <h3> Ваші публікації</h3>
+        @if (Model.Photos.Count > 0)
+        {
+            <div class="photo-card-profile">
+                @foreach (var photo in Model.Photos)
+                {
+                    <div class="photo-item">
+                        <img src="@photo.Image" alt="@photo.Title" width="300" />
+                        <p>@photo.Title</p>
+                        <p>@photo.Caption</p>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p>У вас немає жодного опублікованого фото.</p>
+        }
+    <br>
+    <br>
+    </div>
+</body>
+</html>

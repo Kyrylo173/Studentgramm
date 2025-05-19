@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "Налаштування";
+}
+
+   <body>
+    <div class="profile-widget">
+    <button class="anim-button">
+    <a class="btn" href="/Profile/Profile"> Повернутися до профілю</a>
+    </button>
+    
+     <p><strong>Ім'я': </strong>@Model.Username</p>
+     <p><strong>Про себе: </strong>@Model.Description</p>
+      <form class="settings-form" method="post" asp-action="ProfileSettings">
+          <br>
+            <label>Новий опис</label>
+          <br>
+          <textarea id="textarea-settings" name="NewDescription" maxlength="150">@Model.Description</textarea>
+          <br>
+          <br>
+        <button class="anim-button" type="submit">Зберегти!</button>
+      </form>
+      <br>
+      <br>
+       <a class=" btn btn-danger" asp-controller="Auth" asp-action="Logout">Вийти з облікового запису</a>
+      </div>
+ </body>
