@@ -1,7 +1,7 @@
 # Як запустити 
 
 1. Завантажити мову PostgreSQL16.
-2. Завантажити цифровий інтерфейс PostBird для мови PostgreSQL.
+2. Завантажити цифровий інтерфейс PostBird https://github.com/Paxa/postbird?tab=readme-ov-file для мови PostgreSQL внизу пункт Windows Installer.
 3. В полях Username, Password, Database написати postgres -> Save&Connect.
 4. У розділі Select database натиснути на випадаючий список -> Create database -> Вказати ім'я для бази даних StudentApp -> Create.
 5. Створити нову папку на робочому столі.
